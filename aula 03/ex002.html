@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacionalidade</title>
+    <style>
+        body{
+            font: normal 14pt Arial;
+            background-color: rgb(167, 212, 167);
+            margin-left: 20px;
+        }
+        input#outro{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Nacionalidade</h1>
+    <hr>
+    <p>Informe o seu país de origem!</p>
+    <form>
+        <input type="radio" name="pais" id="pais1" value="pais1">
+        <label for="pais1">Brasil</label><br>
+
+        <input type="radio" name="pais" id="pais2" value="pais2">
+        <label for="pais2">EUA</label><br>
+
+        <input type="radio" name="pais" id="pais3" value="pais3">
+        <label for="pais3">Alemanha</label><br>
+
+        <input type="radio" name="pais" id="pais4" value="pais4">
+        <label for="pais4">França</label><br>
+
+        <input type="radio" name="pais" id="pais5" value="pais5">
+        <label for="pais5">Outro </label><input type="text" id="outro">
+        <input type="button" value="Confirmar" onclick="nacao()">
+        <div id="res"></div>
+    </form>
+
+    <script>
+        function nacao() {
+            var pais = document.getElementsByName("pais");
+            var outro = document.getElementById("outro");
+            var res = document.getElementById("res");
+
+            pais.forEach(function (pais) {
+                if (pais.checked) {
+                    if (pais.id == "pais1") {
+                        res.innerHTML = `<p>Você é Brasileiro!</p>`;
+                    }
+                    if (pais.id == "pais2") {
+                        res.innerHTML = `<p>Você é Norte-Americano!</p>`;
+                    }
+                    if (pais.id == "pais3") {
+                        res.innerHTML = `<p>Você é Alemão!</p>`;
+                    }
+                    if (pais.id == "pais4") {
+                        res.innerHTML = `<p>Você é Francês!</p>`;
+                    }
+                    if (pais.id == "pais5") {
+                        if(outro.value == ""){
+                            res.innerHTML = `<p>País não informado!</p>`
+                        }else{
+                            res.innerHTML = `<p>Seu país é <strong>${outro.value}</strong>. Você é estrangeiro</p>`;
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
